@@ -1,0 +1,5196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manifest 2026 — Living Prospect Intelligence (465 companies)</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#08090d;--surface:#10131a;--surface2:#171c27;--surface3:#1e2535;
+  --border:#1e2535;--border2:#2a3347;
+  --accent:#00e5a0;--accent2:#3b7fff;--accent3:#ff6b35;--accent4:#c77dff;
+  --accent5:#ffd166;--accent6:#ef476f;
+  --text:#e8eaf0;--muted:#6b7a99;--muted2:#4a5570;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:"DM Sans",sans-serif;font-size:13px;line-height:1.5;min-height:100vh;}
+
+/* ── HEADER ── */
+.header{padding:32px 48px 24px;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;background:rgba(8,9,13,.95);backdrop-filter:blur(12px);}
+.header-top{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+.brand{display:flex;flex-direction:column;gap:4px;}
+.brand-eye{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.18em;color:var(--accent);text-transform:uppercase;}
+.brand-title{font-family:"Syne",sans-serif;font-size:22px;font-weight:800;letter-spacing:-.02em;}
+.brand-title span{color:var(--accent);}
+.header-stats{display:flex;gap:24px;flex-wrap:wrap;align-items:center;}
+.hstat{display:flex;flex-direction:column;align-items:center;gap:1px;padding:8px 16px;background:var(--surface);border:1px solid var(--border2);border-radius:8px;}
+.hstat-n{font-family:"Syne",sans-serif;font-size:20px;font-weight:800;line-height:1;}
+.hstat-l{font-family:"DM Mono",monospace;font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;}
+.hstat.accent .hstat-n{color:var(--accent);}
+.hstat.blue .hstat-n{color:var(--accent2);}
+.hstat.orange .hstat-n{color:var(--accent5);}
+.hstat.pink .hstat-n{color:var(--accent6);}
+
+/* ── FILTER BAR ── */
+.filter-bar{padding:12px 48px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+.fb-group{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+.fb-label{font-family:"DM Mono",monospace;font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;white-space:nowrap;padding-right:4px;border-right:1px solid var(--border2);margin-right:2px;}
+.chip{padding:4px 11px;border-radius:100px;border:1px solid var(--border2);background:transparent;color:var(--muted);font-family:"DM Mono",monospace;font-size:10px;cursor:pointer;transition:all .15s;white-space:nowrap;user-select:none;}
+.chip:hover{border-color:var(--accent2);color:var(--accent2);}
+.chip.on{background:var(--accent2);border-color:var(--accent2);color:#fff;font-weight:500;}
+.chip.on.accent{background:var(--accent);border-color:var(--accent);color:#000;}
+.chip.on.orange{background:var(--accent5);border-color:var(--accent5);color:#000;}
+.chip.on.pink{background:var(--accent6);border-color:var(--accent6);color:#fff;}
+.fb-sep{width:1px;height:20px;background:var(--border2);margin:0 4px;}
+.search-wrap{margin-left:auto;position:relative;}
+.search-wrap input{padding:5px 12px 5px 32px;background:var(--surface2);border:1px solid var(--border2);border-radius:8px;color:var(--text);font-family:"DM Mono",monospace;font-size:11px;width:220px;outline:none;transition:border-color .15s;}
+.search-wrap input:focus{border-color:var(--accent2);}
+.search-wrap input::placeholder{color:var(--muted2);}
+.search-icon{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:13px;pointer-events:none;}
+
+/* ── ACTIVE FILTER PILLS ── */
+.active-filters{padding:8px 48px;background:var(--bg);border-bottom:1px solid var(--border);display:flex;gap:6px;flex-wrap:wrap;align-items:center;min-height:36px;}
+.active-filters:empty{display:none;}
+.af-label{font-family:"DM Mono",monospace;font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;}
+.af-pill{display:flex;align-items:center;gap:5px;padding:3px 10px;background:rgba(59,127,255,.12);border:1px solid rgba(59,127,255,.3);border-radius:100px;font-family:"DM Mono",monospace;font-size:10px;color:var(--accent2);}
+.af-pill button{background:none;border:none;color:var(--accent2);cursor:pointer;font-size:13px;line-height:1;padding:0;display:flex;align-items:center;}
+.clear-all{padding:3px 10px;background:rgba(239,71,111,.1);border:1px solid rgba(239,71,111,.25);border-radius:100px;font-family:"DM Mono",monospace;font-size:10px;color:var(--accent6);cursor:pointer;}
+
+/* ── MAIN LAYOUT ── */
+.main{display:flex;min-height:calc(100vh - 200px);}
+.sidebar{width:220px;flex-shrink:0;border-right:1px solid var(--border);padding:20px 0;position:sticky;top:130px;height:calc(100vh - 130px);overflow-y:auto;}
+.sidebar::-webkit-scrollbar{width:4px;}
+.sidebar::-webkit-scrollbar-track{background:transparent;}
+.sidebar::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
+.sb-section{margin-bottom:20px;}
+.sb-title{font-family:"DM Mono",monospace;font-size:9px;letter-spacing:.15em;color:var(--muted2);text-transform:uppercase;padding:0 16px;margin-bottom:6px;}
+.sb-item{display:flex;align-items:center;justify-content:space-between;padding:6px 16px;cursor:pointer;transition:background .12s;border-left:2px solid transparent;}
+.sb-item:hover{background:var(--surface);}
+.sb-item.active{background:var(--surface2);border-left-color:var(--accent2);}
+.sb-name{font-size:12px;color:var(--text);}
+.sb-item.active .sb-name{color:var(--accent2);font-weight:500;}
+.sb-badge{font-family:"DM Mono",monospace;font-size:9px;color:var(--muted);background:var(--surface2);padding:1px 6px;border-radius:100px;}
+
+/* ── TABLE AREA ── */
+.table-area{flex:1;overflow:hidden;}
+.table-header{padding:16px 24px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);}
+.th-left{display:flex;align-items:center;gap:10px;}
+.results-label{font-family:"DM Mono",monospace;font-size:11px;color:var(--muted);}
+.results-count{font-family:"Syne",sans-serif;font-size:16px;font-weight:700;color:var(--text);}
+.th-right{display:flex;gap:8px;}
+.view-btn{padding:4px 12px;border-radius:6px;border:1px solid var(--border2);background:transparent;color:var(--muted);font-family:"DM Mono",monospace;font-size:10px;cursor:pointer;transition:all .15s;}
+.view-btn.active{background:var(--accent2);border-color:var(--accent2);color:#fff;}
+.export-btn{padding:4px 12px;border-radius:6px;border:1px solid var(--border2);background:transparent;color:var(--muted);font-family:"DM Mono",monospace;font-size:10px;cursor:pointer;transition:all .15s;}
+.export-btn:hover{border-color:var(--accent);color:var(--accent);}
+
+/* ── TABLE ── */
+.tbl-wrap{overflow-x:auto;overflow-y:auto;max-height:calc(100vh - 280px);}
+.tbl{width:100%;border-collapse:collapse;font-size:12px;}
+.tbl th{font-family:"DM Mono",monospace;font-size:9px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;padding:10px 16px;text-align:left;background:var(--surface);border-bottom:2px solid var(--border2);white-space:nowrap;position:sticky;top:0;z-index:5;cursor:pointer;user-select:none;transition:color .15s;}
+.tbl th:hover{color:var(--accent2);}
+.tbl th .sort-arrow{margin-left:4px;opacity:.4;}
+.tbl th.sorted .sort-arrow{opacity:1;color:var(--accent2);}
+.tbl td{padding:9px 16px;border-bottom:1px solid var(--border);vertical-align:middle;transition:background .1s;}
+.tbl tr:hover td{background:var(--surface);}
+.tbl tr.prospect-row td{background:rgba(255,209,102,.03);}
+.tbl tr.prospect-row:hover td{background:rgba(255,209,102,.07);}
+.tbl tr.ai-row td{background:rgba(0,229,160,.02);}
+.row-name{font-family:"Syne",sans-serif;font-size:12px;font-weight:600;}
+.row-name a{color:var(--text);text-decoration:none;}
+.row-name a:hover{color:var(--accent2);}
+.row-notes{font-size:11px;color:var(--muted);margin-top:2px;font-style:italic;}
+
+/* ── CARD GRID ── */
+.card-grid-view{padding:20px 24px;display:none;}
+.card-grid-view.active{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;}
+.sponsor-card{background:var(--surface);border:1px solid var(--border2);border-radius:10px;padding:14px;position:relative;overflow:hidden;transition:border-color .15s,transform .15s;cursor:default;}
+.sponsor-card:hover{border-color:var(--accent2);transform:translateY(-1px);}
+.prospect-card-v2{background:repeating-linear-gradient(135deg,rgba(255,209,102,.025) 0,rgba(255,209,102,.025) 1px,transparent 1px,transparent 8px);border:1px dashed rgba(255,209,102,.4);border-radius:10px;padding:14px;position:relative;overflow:hidden;transition:border-color .15s,transform .15s;}
+.prospect-card-v2:hover{border-color:rgba(255,209,102,.8);transform:translateY(-1px);}
+.card-color-bar{position:absolute;top:0;left:0;right:0;height:2px;}
+.card-co-name{font-family:"Syne",sans-serif;font-size:13px;font-weight:700;margin-bottom:4px;line-height:1.3;}
+.card-meta{display:flex;gap:6px;align-items:center;margin-bottom:8px;flex-wrap:wrap;}
+.card-notes{font-size:10.5px;color:var(--muted);margin-top:5px;line-height:1.5;}
+
+/* ── TIER BADGES ── */
+.tier{font-family:"DM Mono",monospace;font-size:9px;padding:2px 7px;border-radius:100px;text-transform:uppercase;letter-spacing:.07em;white-space:nowrap;}
+.t-presenting{background:rgba(0,229,160,.2);color:#00e5a0;border:1px solid rgba(0,229,160,.3);}
+.t-headline{background:rgba(239,71,111,.18);color:#ef476f;border:1px solid rgba(239,71,111,.3);}
+.t-gold{background:rgba(255,209,102,.15);color:#d4a017;border:1px solid rgba(255,180,0,.25);}
+.t-silver{background:rgba(180,190,210,.12);color:#9aaac0;border:1px solid rgba(160,175,200,.2);}
+.t-bronze{background:rgba(180,120,60,.14);color:#b08040;border:1px solid rgba(160,100,50,.25);}
+.t-exhibitor{background:rgba(59,127,255,.1);color:#6e9fef;border:1px solid rgba(59,127,255,.2);}
+.t-prospect{background:rgba(255,209,102,.14);color:#e8b84b;border:1px solid rgba(255,209,102,.3);}
+.t-ai-prospect{background:rgba(0,229,160,.12);color:#00c880;border:1px solid rgba(0,229,160,.25);}
+
+/* ── CATEGORY PILLS ── */
+.cat-pill{font-family:"DM Mono",monospace;font-size:9px;padding:2px 7px;border-radius:100px;white-space:nowrap;}
+
+/* ── AI TAGS ── */
+.tag{font-family:"DM Mono",monospace;font-size:9px;padding:1.5px 6px;border-radius:100px;font-weight:500;white-space:nowrap;}
+.tag-ai{background:rgba(0,229,160,.12);color:#00c880;border:1px solid rgba(0,229,160,.2);}
+.tag-agentic{background:rgba(59,127,255,.12);color:#3b7fff;border:1px solid rgba(59,127,255,.2);}
+.tag-predictive{background:rgba(199,125,255,.12);color:#b070ee;border:1px solid rgba(199,125,255,.2);}
+.tag-llm{background:rgba(255,209,102,.1);color:#c8940a;border:1px solid rgba(255,180,0,.2);}
+.tag-twin{background:rgba(239,71,111,.1);color:#d94060;border:1px solid rgba(239,71,111,.2);}
+.tag-cv{background:rgba(255,107,53,.1);color:#e05828;border:1px solid rgba(255,107,53,.2);}
+.tag-gap{background:rgba(255,107,53,.1);color:#e05828;border:1px solid rgba(255,107,53,.2);}
+.tag-added{background:rgba(0,229,160,.1);color:#00c880;border:1px solid rgba(0,229,160,.2);}
+
+/* ── FIND MORE PANEL ── */
+.find-more-section{padding:16px 24px;border-top:1px solid var(--border);background:var(--surface);}
+.fm-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
+.fm-title{font-family:"Syne",sans-serif;font-size:14px;font-weight:700;}
+.fm-subtitle{font-size:11px;color:var(--muted);margin-top:2px;}
+.fm-controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.fm-cat-select{padding:6px 12px;background:var(--surface2);border:1px solid var(--border2);border-radius:8px;color:var(--text);font-family:"DM Mono",monospace;font-size:10.5px;outline:none;cursor:pointer;}
+.fm-cat-select:focus{border-color:var(--accent2);}
+.fm-search-btn{padding:6px 16px;background:var(--accent2);border:none;border-radius:8px;color:#fff;font-family:"DM Mono",monospace;font-size:10.5px;cursor:pointer;transition:opacity .15s;display:flex;align-items:center;gap:6px;}
+.fm-search-btn:hover{opacity:.85;}
+.fm-search-btn:disabled{opacity:.5;cursor:not-allowed;}
+.fm-search-btn .spin{display:none;animation:spin .6s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg)}}
+.fm-search-btn.loading .spin{display:inline;}
+.fm-search-btn.loading .idle-txt{display:none;}
+.fm-results{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;margin-top:14px;}
+.fm-card{background:var(--surface2);border:1px solid var(--border2);border-radius:8px;padding:14px;transition:border-color .15s;}
+.fm-card:hover{border-color:rgba(59,127,255,.4);}
+.fm-card-name{font-family:"Syne",sans-serif;font-size:13px;font-weight:700;margin-bottom:4px;}
+.fm-card-cat{font-family:"DM Mono",monospace;font-size:9.5px;color:var(--muted);margin-bottom:6px;text-transform:uppercase;}
+.fm-card-why{font-size:11px;color:var(--muted);line-height:1.5;margin-bottom:10px;}
+.fm-add-btn{padding:5px 12px;background:rgba(59,127,255,.12);border:1px solid rgba(59,127,255,.3);border-radius:6px;color:var(--accent2);font-family:"DM Mono",monospace;font-size:10px;cursor:pointer;transition:all .15s;width:100%;}
+.fm-add-btn:hover{background:rgba(59,127,255,.22);}
+.fm-add-btn.added{background:rgba(0,229,160,.1);border-color:rgba(0,229,160,.3);color:var(--accent);cursor:default;}
+.fm-empty{font-size:12px;color:var(--muted);font-style:italic;padding:16px 0;}
+.fm-history{margin-top:16px;border-top:1px solid var(--border);}
+.fm-history-title{font-family:"DM Mono",monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:10px 0 8px;}
+.fm-history-item{display:flex;align-items:center;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border);font-size:11px;}
+.fm-history-name{font-weight:600;}
+.fm-history-meta{color:var(--muted);font-size:10px;}
+
+/* ── NOTE CELL ── */
+.note-cell{font-size:11px;color:var(--muted);font-style:italic;max-width:200px;}
+.note-input{background:transparent;border:none;color:var(--muted);font-family:"DM Sans",sans-serif;font-size:11px;font-style:italic;width:100%;outline:none;cursor:text;}
+.note-input:focus{color:var(--text);font-style:normal;background:var(--surface2);border-radius:4px;padding:1px 4px;}
+.note-input::placeholder{color:var(--muted2);}
+
+/* ── EMPTY STATE ── */
+.empty-state{padding:60px 24px;text-align:center;}
+.empty-icon{font-size:40px;margin-bottom:12px;opacity:.4;}
+.empty-title{font-family:"Syne",sans-serif;font-size:16px;font-weight:700;color:var(--muted);margin-bottom:4px;}
+.empty-sub{font-size:12px;color:var(--muted2);}
+
+/* ── SCROLLBAR ── */
+.tbl-wrap::-webkit-scrollbar{width:6px;height:6px;}
+.tbl-wrap::-webkit-scrollbar-track{background:transparent;}
+.tbl-wrap::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px;}
+
+@media(max-width:900px){
+  .header{padding:20px 16px 16px;}
+  .filter-bar,.active-filters{padding-left:12px;padding-right:12px;}
+  .sidebar{display:none;}
+  .table-header,.find-more-section{padding-left:12px;padding-right:12px;}
+  .tbl td,.tbl th{padding:8px 10px;}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-top">
+    <div class="brand">
+      <div class="brand-eye">Manifest Vegas 2026 · Living Prospect Intelligence</div>
+      <div class="brand-title">Sponsor &amp; <span>Prospect</span> Database</div>
+    </div>
+    <div class="header-stats">
+      <div class="hstat accent"><span class="hstat-n" id="stat-total">355</span><span class="hstat-l">Total</span></div>
+      <div class="hstat blue"><span class="hstat-n" id="stat-sponsors">338</span><span class="hstat-l">Sponsors</span></div>
+      <div class="hstat orange"><span class="hstat-n" id="stat-prospects">17</span><span class="hstat-l">Prospects</span></div>
+      <div class="hstat pink"><span class="hstat-n" id="stat-ai">0</span><span class="hstat-l">AI-Tagged</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <div class="fb-group">
+    <span class="fb-label">Type</span>
+    <span class="chip on accent" data-filter="type" data-val="all" onclick="toggleFilter(this)">All</span>
+    <span class="chip" data-filter="type" data-val="sponsor" onclick="toggleFilter(this)">Sponsors</span>
+    <span class="chip" data-filter="type" data-val="prospect" onclick="toggleFilter(this)">Prospects</span>
+    <span class="chip" data-filter="type" data-val="ai-prospect" onclick="toggleFilter(this)">AI Suggested</span>
+  </div>
+  <div class="fb-sep"></div>
+  <div class="fb-group">
+    <span class="fb-label">Tier</span>
+    <span class="chip" data-filter="tier" data-val="Presenting" onclick="toggleFilter(this)">Presenting</span>
+    <span class="chip" data-filter="tier" data-val="Headline" onclick="toggleFilter(this)">Headline</span>
+    <span class="chip" data-filter="tier" data-val="Gold" onclick="toggleFilter(this)">Gold</span>
+    <span class="chip" data-filter="tier" data-val="Silver" onclick="toggleFilter(this)">Silver</span>
+    <span class="chip" data-filter="tier" data-val="Bronze" onclick="toggleFilter(this)">Bronze</span>
+    <span class="chip" data-filter="tier" data-val="Exhibitor" onclick="toggleFilter(this)">Exhibitor</span>
+    <span class="chip" data-filter="tier" data-val="Prospect" onclick="toggleFilter(this)">Prospect</span>
+  </div>
+  <div class="fb-sep"></div>
+  <div class="fb-group">
+    <span class="fb-label">AI</span>
+    <span class="chip" data-filter="ai" data-val="true" onclick="toggleFilter(this)">AI Only</span>
+    <span class="chip" data-filter="ai" data-val="agentic" onclick="toggleFilter(this)">Agentic</span>
+    <span class="chip" data-filter="ai" data-val="predictive" onclick="toggleFilter(this)">Predictive</span>
+    <span class="chip" data-filter="ai" data-val="llm" onclick="toggleFilter(this)">LLM/GenAI</span>
+  </div>
+  <div class="search-wrap">
+    <span class="search-icon">⌕</span>
+    <input type="text" placeholder="Search companies..." id="searchInput" oninput="applyFilters()">
+  </div>
+</div>
+
+<!-- ACTIVE FILTERS -->
+<div class="active-filters" id="activeFilters"></div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar" id="sidebar">
+    <div class="sb-section">
+      <div class="sb-title">Category</div>
+      <div class="sb-item active" data-cat="all" onclick="selectCat(this)">
+        <span class="sb-name">All Categories</span>
+        <span class="sb-badge" id="sb-all">355</span>
+      </div>
+    </div>
+    <div class="sb-section" id="cat-list"></div>
+  </div>
+
+  <!-- TABLE AREA -->
+  <div class="table-area">
+    <div class="table-header">
+      <div class="th-left">
+        <span class="results-count" id="results-count">355</span>
+        <span class="results-label">companies</span>
+      </div>
+      <div class="th-right">
+        <button class="view-btn active" onclick="setView('table',this)">Table</button>
+        <button class="view-btn" onclick="setView('cards',this)">Cards</button>
+        <button class="export-btn" onclick="exportCSV()">↓ Export CSV</button>
+      </div>
+    </div>
+
+    <!-- TABLE VIEW -->
+    <div class="tbl-wrap" id="tableWrap">
+      <table class="tbl" id="mainTable">
+        <thead>
+          <tr>
+            <th onclick="sortBy('name')" id="th-name">Company <span class="sort-arrow">↕</span></th>
+            <th onclick="sortBy('tier')" id="th-tier">Tier <span class="sort-arrow">↕</span></th>
+            <th onclick="sortBy('cat')" id="th-cat">Category <span class="sort-arrow">↕</span></th>
+            <th>AI Tags</th>
+            <th>Notes</th>
+            <th>Source</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+      <div class="empty-state" id="emptyState" style="display:none">
+        <div class="empty-icon">🔍</div>
+        <div class="empty-title">No results found</div>
+        <div class="empty-sub">Try adjusting your filters or search terms</div>
+      </div>
+    </div>
+
+    <!-- CARD VIEW -->
+    <div class="card-grid-view" id="cardView"></div>
+
+    <!-- FIND MORE SECTION -->
+    <div class="find-more-section">
+      <div class="fm-header">
+        <div>
+          <div class="fm-title">🔍 Find More Prospects</div>
+          <div class="fm-subtitle">AI-powered prospect discovery — suggest companies not already in the database</div>
+        </div>
+      </div>
+      <div class="fm-controls">
+        <select class="fm-cat-select" id="fmCatSelect">
+          <option value="all">All Categories</option>
+          <option value="3PL">3PL / Carriers</option>
+          <option value="Robotics">Robotics &amp; Automation</option>
+          <option value="WMS">WMS</option>
+          <option value="TMS">TMS</option>
+          <option value="LastMile">Last Mile &amp; Parcel</option>
+          <option value="Visibility">Visibility &amp; Track/Trace</option>
+          <option value="Freight">Freight Tech &amp; Forwarding</option>
+          <option value="eCommerce">eCommerce &amp; Returns</option>
+          <option value="AI">AI / LLM Platforms</option>
+          <option value="Planning">SC Planning &amp; Digital Twins</option>
+          <option value="Procurement">Procurement &amp; Sourcing</option>
+          <option value="AV">Autonomous Vehicles</option>
+          <option value="Infra">Infrastructure &amp; IoT</option>
+          <option value="DataFin">Data / Finance / EDI</option>
+        </select>
+        <button class="fm-search-btn" id="fmBtn" onclick="findMoreProspects()">
+          <span class="idle-txt">✦ Find Prospects</span>
+          <span class="spin">⟳</span>
+        </button>
+        <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted)">Results auto-added to database &amp; persist across sessions</span>
+      </div>
+      <div class="fm-results" id="fmResults"></div>
+      <div id="fmHistory" class="fm-history" style="display:none">
+        <div class="fm-history-title">Recently Added Prospects</div>
+        <div id="fmHistoryList"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════════════════
+// DATA
+// ═══════════════════════════════════════════════════════════════════════════
+const SEED_DATA = [
+  {
+    "name": "DHL Supply Chain",
+    "tier": "Presenting",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "ArcBest",
+    "tier": "Headline",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Auger",
+    "tier": "Headline",
+    "cat": "Visibility",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "DeliverDirect",
+    "tier": "Headline",
+    "cat": "LastMile",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "DP World",
+    "tier": "Headline",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Exotec",
+    "tier": "Headline",
+    "cat": "Robotics",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Flexport",
+    "tier": "Headline",
+    "cat": "LastMile",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Freehand",
+    "tier": "Headline",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "Agentic"
+    ],
+    "role": ""
+  },
+  {
+    "name": "GXO Logistics",
+    "tier": "Headline",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Locus Robotics",
+    "tier": "Headline",
+    "cat": "Robotics",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Maersk",
+    "tier": "Headline",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Ocado Intelligent Automation",
+    "tier": "Headline",
+    "cat": "Robotics",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Pallet",
+    "tier": "Headline",
+    "cat": "Freight",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Penske Transportation Solutions",
+    "tier": "Headline",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Ryder System, Inc.",
+    "tier": "Headline",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Surgere",
+    "tier": "Headline",
+    "cat": "Visibility",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "TORC",
+    "tier": "Headline",
+    "cat": "AV",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "UniUni",
+    "tier": "Headline",
+    "cat": "LastMile",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Aptean Supply Chain",
+    "tier": "Gold",
+    "cat": "WMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "arnata",
+    "tier": "Gold",
+    "cat": "Planning",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Aviro360",
+    "tier": "Gold",
+    "cat": "Procurement",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "BlackBerry Radar",
+    "tier": "Gold",
+    "cat": "Visibility",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "BoxC",
+    "tier": "Gold",
+    "cat": "Freight",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Breakthrough",
+    "tier": "Gold",
+    "cat": "DataFin",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "C.H. Robinson",
+    "tier": "Gold",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Coupa",
+    "tier": "Gold",
+    "cat": "Procurement",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "Predictive"
+    ],
+    "role": ""
+  },
+  {
+    "name": "Descartes",
+    "tier": "Gold",
+    "cat": "TMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Dexory",
+    "tier": "Gold",
+    "cat": "Robotics",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "CV"
+    ],
+    "role": ""
+  },
+  {
+    "name": "Dot Ai",
+    "tier": "Gold",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "LLM"
+    ],
+    "role": ""
+  },
+  {
+    "name": "EAIGLE",
+    "tier": "Gold",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "CV"
+    ],
+    "role": ""
+  },
+  {
+    "name": "EasyPost",
+    "tier": "Gold",
+    "cat": "eCommerce",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "FlavorCloud",
+    "tier": "Gold",
+    "cat": "Freight",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "FourKites",
+    "tier": "Gold",
+    "cat": "Visibility",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "Predictive"
+    ],
+    "role": ""
+  },
+  {
+    "name": "Freightliner Trucks",
+    "tier": "Gold",
+    "cat": "AV",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "GEODIS",
+    "tier": "Gold",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Gnosis Freight",
+    "tier": "Gold",
+    "cat": "Visibility",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Hardis Supply Chain",
+    "tier": "Gold",
+    "cat": "WMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Honeywell Intelligrated",
+    "tier": "Gold",
+    "cat": "Robotics",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Hy-Tek Intralogistics",
+    "tier": "Gold",
+    "cat": "Robotics",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Infios",
+    "tier": "Gold",
+    "cat": "WMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Instawork",
+    "tier": "Gold",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Iron Mountain",
+    "tier": "Gold",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "ITS Logistics",
+    "tier": "Gold",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Kaleris",
+    "tier": "Gold",
+    "cat": "TMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Kinaxis",
+    "tier": "Gold",
+    "cat": "Planning",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "Predictive"
+    ],
+    "role": ""
+  },
+  {
+    "name": "Lineage",
+    "tier": "Gold",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Manhattan",
+    "tier": "Gold",
+    "cat": "WMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "myQ Enterprise",
+    "tier": "Gold",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Nauta",
+    "tier": "Gold",
+    "cat": "TMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "OneRail",
+    "tier": "Gold",
+    "cat": "LastMile",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Orderful",
+    "tier": "Gold",
+    "cat": "Freight",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Overhaul",
+    "tier": "Gold",
+    "cat": "Visibility",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "ReturnPro",
+    "tier": "Gold",
+    "cat": "eCommerce",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "SAMSUNG SDS",
+    "tier": "Gold",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "SEKO Logistics",
+    "tier": "Gold",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Shipium",
+    "tier": "Gold",
+    "cat": "eCommerce",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Softeon",
+    "tier": "Gold",
+    "cat": "WMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Tive",
+    "tier": "Gold",
+    "cat": "Visibility",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "TRUCKSTOP.COM",
+    "tier": "Gold",
+    "cat": "DataFin",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Veho",
+    "tier": "Gold",
+    "cat": "LastMile",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Vizion",
+    "tier": "Gold",
+    "cat": "Visibility",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Wabash",
+    "tier": "Gold",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "WiseTech Global Group",
+    "tier": "Gold",
+    "cat": "Freight",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "WSI | KASE",
+    "tier": "Gold",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "4flow",
+    "tier": "Silver",
+    "cat": "Planning",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "AIMMS",
+    "tier": "Silver",
+    "cat": "Planning",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "Digital Twin",
+      "Predictive"
+    ],
+    "role": ""
+  },
+  {
+    "name": "Alvys",
+    "tier": "Silver",
+    "cat": "TMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "APL Logistics",
+    "tier": "Silver",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Arkestro",
+    "tier": "Silver",
+    "cat": "Procurement",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "Predictive"
+    ],
+    "role": ""
+  },
+  {
+    "name": "Ashdod Port CVC",
+    "tier": "Silver",
+    "cat": "Freight",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "AtoB",
+    "tier": "Silver",
+    "cat": "DataFin",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Augment",
+    "tier": "Silver",
+    "cat": "Robotics",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Aurora",
+    "tier": "Silver",
+    "cat": "AV",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "AutoPallet Robotics",
+    "tier": "Silver",
+    "cat": "Robotics",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Blue Yonder",
+    "tier": "Silver",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "Predictive",
+      "Digital Twin"
+    ],
+    "role": ""
+  },
+  {
+    "name": "BlueCargo",
+    "tier": "Silver",
+    "cat": "Freight",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Brambles",
+    "tier": "Silver",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "C.R. England Inc.",
+    "tier": "Silver",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Cart.com",
+    "tier": "Silver",
+    "cat": "eCommerce",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "CBRE",
+    "tier": "Silver",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Cleo",
+    "tier": "Silver",
+    "cat": "DataFin",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Cloneops.ai",
+    "tier": "Silver",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "Agentic"
+    ],
+    "role": ""
+  },
+  {
+    "name": "CloudPaths",
+    "tier": "Silver",
+    "cat": "Planning",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Corvus Robotics",
+    "tier": "Silver",
+    "cat": "Robotics",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "CV"
+    ],
+    "role": ""
+  },
+  {
+    "name": "Dane Technologies",
+    "tier": "Silver",
+    "cat": "AV",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Deposco",
+    "tier": "Silver",
+    "cat": "WMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Designed Conveyor Systems (DCS)",
+    "tier": "Silver",
+    "cat": "Robotics",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Dragonfly",
+    "tier": "Silver",
+    "cat": "LastMile",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Easy Metrics",
+    "tier": "Silver",
+    "cat": "WMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "EFL Global",
+    "tier": "Silver",
+    "cat": "Freight",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Enveyo",
+    "tier": "Silver",
+    "cat": "eCommerce",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "Predictive"
+    ],
+    "role": ""
+  },
+  {
+    "name": "Ericsson",
+    "tier": "Silver",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "FedEx",
+    "tier": "Silver",
+    "cat": "LastMile",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Fives Intralogistics Corp.",
+    "tier": "Silver",
+    "cat": "Robotics",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "FreightWise & Kuebix",
+    "tier": "Silver",
+    "cat": "TMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Fulfilled by Staples",
+    "tier": "Silver",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Gather AI",
+    "tier": "Silver",
+    "cat": "Robotics",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "CV"
+    ],
+    "role": ""
+  },
+  {
+    "name": "Gebr\u00fcder Weiss - Transport and Logistics",
+    "tier": "Silver",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "GoComet",
+    "tier": "Silver",
+    "cat": "Freight",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "GOFO INC.",
+    "tier": "Silver",
+    "cat": "Freight",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "GoodCang Fulfillment",
+    "tier": "Silver",
+    "cat": "eCommerce",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Google Cloud",
+    "tier": "Silver",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "LLM"
+    ],
+    "role": ""
+  },
+  {
+    "name": "GreyMatter by GreyOrange",
+    "tier": "Silver",
+    "cat": "Robotics",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "Agentic"
+    ],
+    "role": ""
+  },
+  {
+    "name": "Hai Robotics",
+    "tier": "Silver",
+    "cat": "Robotics",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "HappyRobot",
+    "tier": "Silver",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "Agentic",
+      "LLM"
+    ],
+    "role": ""
+  },
+  {
+    "name": "Infor",
+    "tier": "Silver",
+    "cat": "WMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "IntelliTrans",
+    "tier": "Silver",
+    "cat": "TMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "K.Hartwall",
+    "tier": "Silver",
+    "cat": "Robotics",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Kardex",
+    "tier": "Silver",
+    "cat": "Robotics",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Locus",
+    "tier": "Silver",
+    "cat": "Robotics",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Loop",
+    "tier": "Silver",
+    "cat": "eCommerce",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Made4net",
+    "tier": "Silver",
+    "cat": "WMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "MaintainX",
+    "tier": "Silver",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Mastercard",
+    "tier": "Silver",
+    "cat": "DataFin",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "MODE Global",
+    "tier": "Silver",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Neovia Logistics",
+    "tier": "Silver",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "OpenTrack",
+    "tier": "Silver",
+    "cat": "Visibility",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Optimal Dynamics",
+    "tier": "Silver",
+    "cat": "TMS",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "Agentic"
+    ],
+    "role": ""
+  },
+  {
+    "name": "Ox",
+    "tier": "Silver",
+    "cat": "AV",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "PackageX",
+    "tier": "Silver",
+    "cat": "eCommerce",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Procure Analytics",
+    "tier": "Silver",
+    "cat": "Procurement",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Raft",
+    "tier": "Silver",
+    "cat": "Freight",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "ReBound",
+    "tier": "Silver",
+    "cat": "eCommerce",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Rebus",
+    "tier": "Silver",
+    "cat": "WMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Reindeer AI",
+    "tier": "Silver",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "Predictive"
+    ],
+    "role": ""
+  },
+  {
+    "name": "ReturnBear",
+    "tier": "Silver",
+    "cat": "eCommerce",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Revenova",
+    "tier": "Silver",
+    "cat": "TMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Robust.AI",
+    "tier": "Silver",
+    "cat": "Robotics",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Samsara",
+    "tier": "Silver",
+    "cat": "Visibility",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "Predictive"
+    ],
+    "role": ""
+  },
+  {
+    "name": "SAP",
+    "tier": "Silver",
+    "cat": "WMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Sensos",
+    "tier": "Silver",
+    "cat": "Visibility",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "ShipStation",
+    "tier": "Silver",
+    "cat": "eCommerce",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Slip Robotics",
+    "tier": "Silver",
+    "cat": "Robotics",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "SnapFulfil",
+    "tier": "Silver",
+    "cat": "WMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Swisslog",
+    "tier": "Silver",
+    "cat": "Robotics",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "T-Mobile for Business",
+    "tier": "Silver",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Transportation Insight",
+    "tier": "Silver",
+    "cat": "TMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Triumph",
+    "tier": "Silver",
+    "cat": "DataFin",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "U.S. Bank Freight Payment",
+    "tier": "Silver",
+    "cat": "DataFin",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "UKG",
+    "tier": "Silver",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Unbox Robotics Inc",
+    "tier": "Silver",
+    "cat": "Robotics",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "WCAworld",
+    "tier": "Silver",
+    "cat": "Freight",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Zero Down Supply Chain Solutions",
+    "tier": "Silver",
+    "cat": "DataFin",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Zonos",
+    "tier": "Silver",
+    "cat": "Freight",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Amazon Shipping",
+    "tier": "Bronze",
+    "cat": "LastMile",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "APC Postal Logistics",
+    "tier": "Bronze",
+    "cat": "LastMile",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Asendia USA",
+    "tier": "Bronze",
+    "cat": "LastMile",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "BackOps AI",
+    "tier": "Bronze",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Banyan Technology",
+    "tier": "Bronze",
+    "cat": "TMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Bot Auto",
+    "tier": "Bronze",
+    "cat": "AV",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Bringg",
+    "tier": "Bronze",
+    "cat": "LastMile",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Camcode",
+    "tier": "Bronze",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Canary7",
+    "tier": "Bronze",
+    "cat": "WMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Cargomatic, Inc.",
+    "tier": "Bronze",
+    "cat": "LastMile",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "CargoWise",
+    "tier": "Bronze",
+    "cat": "Freight",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "ColdTrack",
+    "tier": "Bronze",
+    "cat": "Visibility",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Complete Quality Solutions",
+    "tier": "Bronze",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "CrimsonLogic (U.S.), Inc.",
+    "tier": "Bronze",
+    "cat": "Freight",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Cyngn",
+    "tier": "Bronze",
+    "cat": "AV",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Da Vinci",
+    "tier": "Bronze",
+    "cat": "WMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "DIGILOG",
+    "tier": "Bronze",
+    "cat": "Freight",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "DispatchTrack",
+    "tier": "Bronze",
+    "cat": "LastMile",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "Predictive"
+    ],
+    "role": ""
+  },
+  {
+    "name": "Easyship",
+    "tier": "Bronze",
+    "cat": "eCommerce",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "eHub",
+    "tier": "Bronze",
+    "cat": "eCommerce",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Electrada",
+    "tier": "Bronze",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Elemica",
+    "tier": "Bronze",
+    "cat": "Freight",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Engineering Innovation, Inc.",
+    "tier": "Bronze",
+    "cat": "Robotics",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "enVista",
+    "tier": "Bronze",
+    "cat": "TMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "ePost Global",
+    "tier": "Bronze",
+    "cat": "LastMile",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Estes Forwarding Worldwide",
+    "tier": "Bronze",
+    "cat": "Freight",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Flexe",
+    "tier": "Bronze",
+    "cat": "eCommerce",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "FragilePAK",
+    "tier": "Bronze",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "FreightSnap LLC",
+    "tier": "Bronze",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "GenLogs",
+    "tier": "Bronze",
+    "cat": "TMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "GeoPostcodes",
+    "tier": "Bronze",
+    "cat": "DataFin",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "GoodShip",
+    "tier": "Bronze",
+    "cat": "Freight",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Green Mountain",
+    "tier": "Bronze",
+    "cat": "DataFin",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Hangar A, LLC",
+    "tier": "Bronze",
+    "cat": "AV",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Highway",
+    "tier": "Bronze",
+    "cat": "DataFin",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Holman Logistics",
+    "tier": "Bronze",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Interlake Mecalux",
+    "tier": "Bronze",
+    "cat": "Robotics",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "J.B. Hunt",
+    "tier": "Bronze",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Jitsu",
+    "tier": "Bronze",
+    "cat": "LastMile",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Keelvar",
+    "tier": "Bronze",
+    "cat": "Procurement",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "Agentic"
+    ],
+    "role": ""
+  },
+  {
+    "name": "Keychain",
+    "tier": "Bronze",
+    "cat": "Procurement",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "KIBO",
+    "tier": "Bronze",
+    "cat": "eCommerce",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "KoiReader Technologies",
+    "tier": "Bronze",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "CV"
+    ],
+    "role": ""
+  },
+  {
+    "name": "KOMPAS VC",
+    "tier": "Bronze",
+    "cat": "DataFin",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Lean Solutions Group",
+    "tier": "Bronze",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "LJM",
+    "tier": "Bronze",
+    "cat": "DataFin",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Logiwa",
+    "tier": "Bronze",
+    "cat": "WMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Lojistic",
+    "tier": "Bronze",
+    "cat": "eCommerce",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Matrix Design Group",
+    "tier": "Bronze",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Meter",
+    "tier": "Bronze",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "MobileDemand",
+    "tier": "Bronze",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Modern Expo",
+    "tier": "Bronze",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Nash",
+    "tier": "Bronze",
+    "cat": "eCommerce",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "nuVizz Inc.",
+    "tier": "Bronze",
+    "cat": "LastMile",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "OnTrac",
+    "tier": "Bronze",
+    "cat": "LastMile",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "OpenText",
+    "tier": "Bronze",
+    "cat": "DataFin",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Orange EV",
+    "tier": "Bronze",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Osa Commerce",
+    "tier": "Bronze",
+    "cat": "eCommerce",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Paccurate",
+    "tier": "Bronze",
+    "cat": "DataFin",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Packsize",
+    "tier": "Bronze",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Piaggio Fast Forward",
+    "tier": "Bronze",
+    "cat": "AV",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Pickle Robot",
+    "tier": "Bronze",
+    "cat": "Robotics",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "CV"
+    ],
+    "role": ""
+  },
+  {
+    "name": "PIPE17 - Order Operations Solutions for 3PLs",
+    "tier": "Bronze",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "PortPro",
+    "tier": "Bronze",
+    "cat": "Freight",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "ProShip, Inc.",
+    "tier": "Bronze",
+    "cat": "eCommerce",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Prox",
+    "tier": "Bronze",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Qargo TMS",
+    "tier": "Bronze",
+    "cat": "TMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Radar",
+    "tier": "Bronze",
+    "cat": "Visibility",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "READYCLOUD - The Shipping, Returns and Growth Marketing Suite",
+    "tier": "Bronze",
+    "cat": "eCommerce",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Reform",
+    "tier": "Bronze",
+    "cat": "Planning",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Rufus Labs",
+    "tier": "Bronze",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Rygen Technologies",
+    "tier": "Bronze",
+    "cat": "TMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "SEAIR Global Inc.",
+    "tier": "Bronze",
+    "cat": "Freight",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Shippeo",
+    "tier": "Bronze",
+    "cat": "Visibility",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "Predictive"
+    ],
+    "role": ""
+  },
+  {
+    "name": "Shippo",
+    "tier": "Bronze",
+    "cat": "eCommerce",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Sifted",
+    "tier": "Bronze",
+    "cat": "eCommerce",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "SimWell",
+    "tier": "Bronze",
+    "cat": "Planning",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "Digital Twin"
+    ],
+    "role": ""
+  },
+  {
+    "name": "SkyMirr",
+    "tier": "Bronze",
+    "cat": "Visibility",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "Digital Twin"
+    ],
+    "role": ""
+  },
+  {
+    "name": "Slamcore",
+    "tier": "Bronze",
+    "cat": "Planning",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "SLS RFID",
+    "tier": "Bronze",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "SPS Commerce",
+    "tier": "Bronze",
+    "cat": "DataFin",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Synkrato",
+    "tier": "Bronze",
+    "cat": "WMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Tai Software",
+    "tier": "Bronze",
+    "cat": "TMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Tenkara",
+    "tier": "Bronze",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Terminal Industries",
+    "tier": "Bronze",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "TOC Logistics",
+    "tier": "Bronze",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Toyota Automated Logistics",
+    "tier": "Bronze",
+    "cat": "Robotics",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Traba",
+    "tier": "Bronze",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Transfix",
+    "tier": "Bronze",
+    "cat": "TMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "UPWELL",
+    "tier": "Bronze",
+    "cat": "DataFin",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Vecna Robotics",
+    "tier": "Bronze",
+    "cat": "Robotics",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Velocitor Solutions",
+    "tier": "Bronze",
+    "cat": "LastMile",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Verity",
+    "tier": "Bronze",
+    "cat": "Robotics",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Waites Sensor Technologies",
+    "tier": "Bronze",
+    "cat": "Visibility",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Wiliot",
+    "tier": "Bronze",
+    "cat": "Visibility",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Willog",
+    "tier": "Bronze",
+    "cat": "Visibility",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Yard Management Solutions",
+    "tier": "Bronze",
+    "cat": "TMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "YMX Logistics",
+    "tier": "Bronze",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "1Logtech",
+    "tier": "Exhibitor",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "3C Software",
+    "tier": "Exhibitor",
+    "cat": "TMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "A3 Freight Payment",
+    "tier": "Exhibitor",
+    "cat": "DataFin",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Adopt AI",
+    "tier": "Exhibitor",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "LLM"
+    ],
+    "role": ""
+  },
+  {
+    "name": "AIKEY, Inc.",
+    "tier": "Exhibitor",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Airwayz",
+    "tier": "Exhibitor",
+    "cat": "AV",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Argu.ai",
+    "tier": "Exhibitor",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "CV"
+    ],
+    "role": ""
+  },
+  {
+    "name": "Arvist",
+    "tier": "Exhibitor",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "CV"
+    ],
+    "role": ""
+  },
+  {
+    "name": "ATAI",
+    "tier": "Exhibitor",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Atomic",
+    "tier": "Exhibitor",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "AutoScheduler.AI",
+    "tier": "Exhibitor",
+    "cat": "WMS",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "Agentic"
+    ],
+    "role": ""
+  },
+  {
+    "name": "Avalara",
+    "tier": "Exhibitor",
+    "cat": "DataFin",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Azimut.ai",
+    "tier": "Exhibitor",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "Predictive"
+    ],
+    "role": ""
+  },
+  {
+    "name": "Bamboo Rose",
+    "tier": "Exhibitor",
+    "cat": "Procurement",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "BBL Black Box Logistics",
+    "tier": "Exhibitor",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Beamup AI",
+    "tier": "Exhibitor",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "Predictive"
+    ],
+    "role": ""
+  },
+  {
+    "name": "Beans.ai",
+    "tier": "Exhibitor",
+    "cat": "LastMile",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Better Trucks",
+    "tier": "Exhibitor",
+    "cat": "LastMile",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "BEUMER Group",
+    "tier": "Exhibitor",
+    "cat": "Robotics",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Blecon",
+    "tier": "Exhibitor",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Budget Truck Rental",
+    "tier": "Exhibitor",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Burq",
+    "tier": "Exhibitor",
+    "cat": "LastMile",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "CACI",
+    "tier": "Exhibitor",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Cainiao",
+    "tier": "Exhibitor",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Camelot 3PL Software",
+    "tier": "Exhibitor",
+    "cat": "WMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "CargoEZ",
+    "tier": "Exhibitor",
+    "cat": "Freight",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Catena",
+    "tier": "Exhibitor",
+    "cat": "DataFin",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "CDL Last Mile",
+    "tier": "Exhibitor",
+    "cat": "LastMile",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "CERTUS Automation",
+    "tier": "Exhibitor",
+    "cat": "Robotics",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Cervo AI",
+    "tier": "Exhibitor",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "Agentic"
+    ],
+    "role": ""
+  },
+  {
+    "name": "Chain",
+    "tier": "Exhibitor",
+    "cat": "DataFin",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Chetu",
+    "tier": "Exhibitor",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "CIMS (WAREHOUSE MANAGEMENT SYSTEMS)",
+    "tier": "Exhibitor",
+    "cat": "WMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "CMC Packaging Automation",
+    "tier": "Exhibitor",
+    "cat": "Robotics",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Cognida.ai",
+    "tier": "Exhibitor",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "LLM"
+    ],
+    "role": ""
+  },
+  {
+    "name": "Commonwealth Packaging Company",
+    "tier": "Exhibitor",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "CONBO",
+    "tier": "Exhibitor",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Conduit",
+    "tier": "Exhibitor",
+    "cat": "DataFin",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Cubiscan",
+    "tier": "Exhibitor",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "CustomsCity",
+    "tier": "Exhibitor",
+    "cat": "Freight",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Cycle Labs",
+    "tier": "Exhibitor",
+    "cat": "WMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "DAT Freight & Analytics",
+    "tier": "Exhibitor",
+    "cat": "Freight",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Datatruck",
+    "tier": "Exhibitor",
+    "cat": "DataFin",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Datex",
+    "tier": "Exhibitor",
+    "cat": "WMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "DCLI",
+    "tier": "Exhibitor",
+    "cat": "Freight",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "DemandForecast.ai",
+    "tier": "Exhibitor",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "Predictive"
+    ],
+    "role": ""
+  },
+  {
+    "name": "Dependable Supply Chain Services",
+    "tier": "Exhibitor",
+    "cat": "DataFin",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Destro AI",
+    "tier": "Exhibitor",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Dispatch Science",
+    "tier": "Exhibitor",
+    "cat": "LastMile",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "DriveU.auto",
+    "tier": "Exhibitor",
+    "cat": "AV",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "EasyCargo - Load efficiently",
+    "tier": "Exhibitor",
+    "cat": "TMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Ember",
+    "tier": "Exhibitor",
+    "cat": "Visibility",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Eurosender SARL",
+    "tier": "Exhibitor",
+    "cat": "LastMile",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "EVOLINQ",
+    "tier": "Exhibitor",
+    "cat": "Planning",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Expertly AI",
+    "tier": "Exhibitor",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "Agentic"
+    ],
+    "role": ""
+  },
+  {
+    "name": "Export Orbital",
+    "tier": "Exhibitor",
+    "cat": "Freight",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Fortigo",
+    "tier": "Exhibitor",
+    "cat": "TMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Forward\u00ae",
+    "tier": "Exhibitor",
+    "cat": "eCommerce",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "FR8BOT",
+    "tier": "Exhibitor",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "Agentic",
+      "LLM"
+    ],
+    "role": ""
+  },
+  {
+    "name": "Fraction.work",
+    "tier": "Exhibitor",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "freightmate Ai",
+    "tier": "Exhibitor",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "LLM"
+    ],
+    "role": ""
+  },
+  {
+    "name": "Gaia Dynamics",
+    "tier": "Exhibitor",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "Predictive"
+    ],
+    "role": ""
+  },
+  {
+    "name": "Gl\u012bd",
+    "tier": "Exhibitor",
+    "cat": "eCommerce",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "GoBolt",
+    "tier": "Exhibitor",
+    "cat": "LastMile",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "GoRamp",
+    "tier": "Exhibitor",
+    "cat": "TMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Gorbel Inc.",
+    "tier": "Exhibitor",
+    "cat": "Robotics",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "HOIST AI",
+    "tier": "Exhibitor",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "Agentic"
+    ],
+    "role": ""
+  },
+  {
+    "name": "Hoopo Systems Ltd.",
+    "tier": "Exhibitor",
+    "cat": "Visibility",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Hyperscale",
+    "tier": "Exhibitor",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "IDScan.net",
+    "tier": "Exhibitor",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Infinity Loop",
+    "tier": "Exhibitor",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "Agentic"
+    ],
+    "role": ""
+  },
+  {
+    "name": "InnoScale",
+    "tier": "Exhibitor",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "International Bridge",
+    "tier": "Exhibitor",
+    "cat": "LastMile",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "ITEM.COM",
+    "tier": "Exhibitor",
+    "cat": "WMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "ITOrizon Inc.",
+    "tier": "Exhibitor",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Katoen Natie",
+    "tier": "Exhibitor",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Kenco",
+    "tier": "Exhibitor",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Key Software Systems",
+    "tier": "Exhibitor",
+    "cat": "LastMile",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Kleinschmidt Inc.",
+    "tier": "Exhibitor",
+    "cat": "DataFin",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Knight-Swift Warehousing & Fulfillment",
+    "tier": "Exhibitor",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Kovix",
+    "tier": "Exhibitor",
+    "cat": "Visibility",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Lateral Fulfillment",
+    "tier": "Exhibitor",
+    "cat": "eCommerce",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Level5Fleet",
+    "tier": "Exhibitor",
+    "cat": "AV",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Levity AI Inc.",
+    "tier": "Exhibitor",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "LLM"
+    ],
+    "role": ""
+  },
+  {
+    "name": "LightSource",
+    "tier": "Exhibitor",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "LiquiDonate",
+    "tier": "Exhibitor",
+    "cat": "Procurement",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Logicall Group",
+    "tier": "Exhibitor",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "LogicPath Logistics",
+    "tier": "Exhibitor",
+    "cat": "LastMile",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "LogiVeo",
+    "tier": "Exhibitor",
+    "cat": "TMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "LogShare - Collaborative Logistics",
+    "tier": "Exhibitor",
+    "cat": "Visibility",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "MATOMAI UAB",
+    "tier": "Exhibitor",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "CV"
+    ],
+    "role": ""
+  },
+  {
+    "name": "Maximum",
+    "tier": "Exhibitor",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "MBIS",
+    "tier": "Exhibitor",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "MetaLearner",
+    "tier": "Exhibitor",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "Predictive"
+    ],
+    "role": ""
+  },
+  {
+    "name": "Midmo",
+    "tier": "Exhibitor",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Moative AI Labs",
+    "tier": "Exhibitor",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "LLM"
+    ],
+    "role": ""
+  },
+  {
+    "name": "Moddule",
+    "tier": "Exhibitor",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Monoflo International",
+    "tier": "Exhibitor",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Nanonets",
+    "tier": "Exhibitor",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "CV"
+    ],
+    "role": ""
+  },
+  {
+    "name": "Ndustrial",
+    "tier": "Exhibitor",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Nexcade",
+    "tier": "Exhibitor",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Northern Lights Technology Development",
+    "tier": "Exhibitor",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "NXTPoint Logistics",
+    "tier": "Exhibitor",
+    "cat": "LastMile",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Octup",
+    "tier": "Exhibitor",
+    "cat": "Planning",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "ODW Logistics",
+    "tier": "Exhibitor",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "OLIMP Warehousing",
+    "tier": "Exhibitor",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Onsharp - Custom Software",
+    "tier": "Exhibitor",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Optiflow",
+    "tier": "Exhibitor",
+    "cat": "Planning",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Optima Overnight",
+    "tier": "Exhibitor",
+    "cat": "LastMile",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Optimologic",
+    "tier": "Exhibitor",
+    "cat": "TMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "PalletTrader",
+    "tier": "Exhibitor",
+    "cat": "DataFin",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Parcel Perform",
+    "tier": "Exhibitor",
+    "cat": "eCommerce",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Passport",
+    "tier": "Exhibitor",
+    "cat": "eCommerce",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "PHD Solutions Inc.",
+    "tier": "Exhibitor",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Precision Lumping Services\n",
+    "tier": "Exhibitor",
+    "cat": "eCommerce",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Prewave",
+    "tier": "Exhibitor",
+    "cat": "Procurement",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Prince Rupert Port Authority",
+    "tier": "Exhibitor",
+    "cat": "Freight",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "ProvisionAI",
+    "tier": "Exhibitor",
+    "cat": "Planning",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Purolator",
+    "tier": "Exhibitor",
+    "cat": "LastMile",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "QicScan AI",
+    "tier": "Exhibitor",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "CV"
+    ],
+    "role": ""
+  },
+  {
+    "name": "Quickcode.ai",
+    "tier": "Exhibitor",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI"
+    ],
+    "role": ""
+  },
+  {
+    "name": "Radaro",
+    "tier": "Exhibitor",
+    "cat": "LastMile",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Rajant Corporation",
+    "tier": "Exhibitor",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Rapid Logistics BV",
+    "tier": "Exhibitor",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Raterunners",
+    "tier": "Exhibitor",
+    "cat": "DataFin",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "RCS Logistics",
+    "tier": "Exhibitor",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Recon Logistics",
+    "tier": "Exhibitor",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Refold AI",
+    "tier": "Exhibitor",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "Agentic"
+    ],
+    "role": ""
+  },
+  {
+    "name": "Reliable Logistics",
+    "tier": "Exhibitor",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Retina Robotics",
+    "tier": "Exhibitor",
+    "cat": "Robotics",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "CV"
+    ],
+    "role": ""
+  },
+  {
+    "name": "Reveel",
+    "tier": "Exhibitor",
+    "cat": "eCommerce",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Riibotics",
+    "tier": "Exhibitor",
+    "cat": "Robotics",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Rilla",
+    "tier": "Exhibitor",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "LLM"
+    ],
+    "role": ""
+  },
+  {
+    "name": "RIVR",
+    "tier": "Exhibitor",
+    "cat": "DataFin",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Saddle Creek Logistics Services",
+    "tier": "Exhibitor",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Saydar Supply Chain Management",
+    "tier": "Exhibitor",
+    "cat": "Planning",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "SeaVantage",
+    "tier": "Exhibitor",
+    "cat": "Visibility",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "SEEBURGER",
+    "tier": "Exhibitor",
+    "cat": "DataFin",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Sensolus",
+    "tier": "Exhibitor",
+    "cat": "Visibility",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Sereact",
+    "tier": "Exhibitor",
+    "cat": "Robotics",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "CV"
+    ],
+    "role": ""
+  },
+  {
+    "name": "Sharetown",
+    "tier": "Exhibitor",
+    "cat": "eCommerce",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "ShipHawk",
+    "tier": "Exhibitor",
+    "cat": "eCommerce",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Shiplab",
+    "tier": "Exhibitor",
+    "cat": "eCommerce",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "ShipSage",
+    "tier": "Exhibitor",
+    "cat": "eCommerce",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Shipsidekick",
+    "tier": "Exhibitor",
+    "cat": "eCommerce",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Shiptheory",
+    "tier": "Exhibitor",
+    "cat": "eCommerce",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Shipthis, Inc",
+    "tier": "Exhibitor",
+    "cat": "eCommerce",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "ShipTime",
+    "tier": "Exhibitor",
+    "cat": "eCommerce",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "SICK, Inc.",
+    "tier": "Exhibitor",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Smarty",
+    "tier": "Exhibitor",
+    "cat": "DataFin",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "SNS",
+    "tier": "Exhibitor",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Softtek",
+    "tier": "Exhibitor",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "SpeedX",
+    "tier": "Exhibitor",
+    "cat": "LastMile",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "SPEEDY DELIVERY LLC",
+    "tier": "Exhibitor",
+    "cat": "LastMile",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "SphereWMS",
+    "tier": "Exhibitor",
+    "cat": "WMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Spoiler Alert",
+    "tier": "Exhibitor",
+    "cat": "Procurement",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Spotwork",
+    "tier": "Exhibitor",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "St. Onge Company",
+    "tier": "Exhibitor",
+    "cat": "Planning",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Stord",
+    "tier": "Exhibitor",
+    "cat": "eCommerce",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "super.AI",
+    "tier": "Exhibitor",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI"
+    ],
+    "role": ""
+  },
+  {
+    "name": "SwiftX",
+    "tier": "Exhibitor",
+    "cat": "LastMile",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Systems Logic, creators of Wireless Warehouse in a Box WMS",
+    "tier": "Exhibitor",
+    "cat": "WMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "TAC Index",
+    "tier": "Exhibitor",
+    "cat": "Freight",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Tag-N-Trac",
+    "tier": "Exhibitor",
+    "cat": "Visibility",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Takt",
+    "tier": "Exhibitor",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Tansect Supply Chain Solutions",
+    "tier": "Exhibitor",
+    "cat": "DataFin",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Tavio Integrations",
+    "tier": "Exhibitor",
+    "cat": "DataFin",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "TeamViewer",
+    "tier": "Exhibitor",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Technova Industries",
+    "tier": "Exhibitor",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Tecsys",
+    "tier": "Exhibitor",
+    "cat": "WMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "TEL - Transport Enterprise Leasing",
+    "tier": "Exhibitor",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Temper AI",
+    "tier": "Exhibitor",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI"
+    ],
+    "role": ""
+  },
+  {
+    "name": "TemperPack",
+    "tier": "Exhibitor",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Thruvision",
+    "tier": "Exhibitor",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Trackstar",
+    "tier": "Exhibitor",
+    "cat": "Visibility",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Treedis",
+    "tier": "Exhibitor",
+    "cat": "Planning",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "Digital Twin"
+    ],
+    "role": ""
+  },
+  {
+    "name": "Trew",
+    "tier": "Exhibitor",
+    "cat": "Robotics",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Trigent Software",
+    "tier": "Exhibitor",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Trimble",
+    "tier": "Exhibitor",
+    "cat": "TMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "TrueCommerce",
+    "tier": "Exhibitor",
+    "cat": "DataFin",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Tryon Solutions",
+    "tier": "Exhibitor",
+    "cat": "WMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Tusk",
+    "tier": "Exhibitor",
+    "cat": "eCommerce",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Two Boxes",
+    "tier": "Exhibitor",
+    "cat": "eCommerce",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "UC Group",
+    "tier": "Exhibitor",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Ultra",
+    "tier": "Exhibitor",
+    "cat": "DataFin",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "UltraShip TMS",
+    "tier": "Exhibitor",
+    "cat": "TMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "UNISEND",
+    "tier": "Exhibitor",
+    "cat": "LastMile",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "United Delivery Service, Ltd.",
+    "tier": "Exhibitor",
+    "cat": "LastMile",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "United Freight Solutions",
+    "tier": "Exhibitor",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "vaibe",
+    "tier": "Exhibitor",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Vallor AI",
+    "tier": "Exhibitor",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "VARGO\u00ae",
+    "tier": "Exhibitor",
+    "cat": "Robotics",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Varolio",
+    "tier": "Exhibitor",
+    "cat": "Procurement",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Vectura Risk Management",
+    "tier": "Exhibitor",
+    "cat": "Procurement",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Vendidit",
+    "tier": "Exhibitor",
+    "cat": "Procurement",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Ventagium Data Consulting",
+    "tier": "Exhibitor",
+    "cat": "DataFin",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Ventus AI",
+    "tier": "Exhibitor",
+    "cat": "Planning",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "Predictive"
+    ],
+    "role": ""
+  },
+  {
+    "name": "Vooma",
+    "tier": "Exhibitor",
+    "cat": "Procurement",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "Agentic"
+    ],
+    "role": ""
+  },
+  {
+    "name": "WareBee",
+    "tier": "Exhibitor",
+    "cat": "WMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "WarehouseSync.ai",
+    "tier": "Exhibitor",
+    "cat": "WMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "WorkWhile",
+    "tier": "Exhibitor",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Yondu AI",
+    "tier": "Exhibitor",
+    "cat": "AI",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI"
+    ],
+    "role": ""
+  },
+  {
+    "name": "Zebra Technologies",
+    "tier": "Exhibitor",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Zencargo",
+    "tier": "Exhibitor",
+    "cat": "Freight",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "ZeroError",
+    "tier": "Exhibitor",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Zeus | Supply chains that think for themselves",
+    "tier": "Exhibitor",
+    "cat": "Planning",
+    "type": "sponsor",
+    "ai": true,
+    "tags": [
+      "AI",
+      "Agentic"
+    ],
+    "role": ""
+  },
+  {
+    "name": "ZIMARK",
+    "tier": "Exhibitor",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Zipments",
+    "tier": "Exhibitor",
+    "cat": "LastMile",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "AIM, Inc.",
+    "tier": "Exhibitor",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Alliance for Chemical Distribution",
+    "tier": "Exhibitor",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "American Association of Port Authorities (AAPA)",
+    "tier": "Exhibitor",
+    "cat": "Freight",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "American Logistics Aid Network (ALAN)",
+    "tier": "Exhibitor",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Blended Pledge",
+    "tier": "Exhibitor",
+    "cat": "Procurement",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Breakbulk Americas 2026",
+    "tier": "Exhibitor",
+    "cat": "Freight",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Broker Carrier Summit",
+    "tier": "Exhibitor",
+    "cat": "3PL",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "C12 Community",
+    "tier": "Exhibitor",
+    "cat": "DataFin",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "CIFFA Corp.",
+    "tier": "Exhibitor",
+    "cat": "Freight",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Commtrex",
+    "tier": "Exhibitor",
+    "cat": "TMS",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "CPOstrategy",
+    "tier": "Exhibitor",
+    "cat": "Procurement",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "CS Recruiting",
+    "tier": "Exhibitor",
+    "cat": "Infra",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "D2XCEL",
+    "tier": "Exhibitor",
+    "cat": "Planning",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "DCSA",
+    "tier": "Exhibitor",
+    "cat": "Freight",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  },
+  {
+    "name": "Digital Supply Chain Instiute (DSCI)",
+    "tier": "Exhibitor",
+    "cat": "DataFin",
+    "type": "sponsor",
+    "ai": false,
+    "tags": [],
+    "role": ""
+  }
+];
+
+const CAT_META = {
+  "3PL":      {label:"3PL / Carriers",          color:"#ef476f", keywords:"asset-based carriers, 3PLs, freight brokers, managed logistics, contract logistics"},
+  "Robotics":  {label:"Robotics & Automation",   color:"#ff6b35", keywords:"AMRs, ASRS, picking robots, conveyor systems, palletizing, drone inventory"},
+  "WMS":       {label:"WMS",                     color:"#00e5a0", keywords:"warehouse management, inventory control, order fulfillment, labor management, slotting"},
+  "TMS":       {label:"TMS",                     color:"#3b7fff", keywords:"transportation management, freight optimization, routing, carrier management, rate shopping"},
+  "LastMile":  {label:"Last Mile & Parcel",      color:"#06d6a0", keywords:"final mile delivery, parcel carriers, delivery orchestration, route optimization"},
+  "Visibility":{label:"Visibility & Track/Trace",color:"#ffd166", keywords:"shipment tracking, ETA predictions, IoT sensors, cargo monitoring, control tower"},
+  "Freight":   {label:"Freight Tech & Forwarding",color:"#118ab2",keywords:"digital freight forwarding, customs compliance, trade finance, port ops, ocean visibility"},
+  "eCommerce": {label:"eCommerce & Returns",     color:"#9b59b6", keywords:"multi-carrier shipping APIs, returns management, ecommerce fulfillment, parcel auditing"},
+  "AI":        {label:"AI / LLM Platforms",      color:"#00e5a0", keywords:"AI copilots, voice agents, autonomous freight workflows, LLM-powered operations, agentic AI"},
+  "Planning":  {label:"SC Planning & Twins",     color:"#c77dff", keywords:"demand planning, S&OP, network design, simulation, inventory optimization, digital twins"},
+  "Procurement":{label:"Procurement & Sourcing", color:"#e9c46a", keywords:"strategic sourcing, supplier management, spend analytics, supply chain risk, ESG sustainability"},
+  "AV":        {label:"Autonomous Vehicles",     color:"#48cae4", keywords:"self-driving trucks, autonomous industrial vehicles, drone delivery, AV freight"},
+  "Infra":     {label:"Infrastructure & IoT",   color:"#8ecae6", keywords:"IoT sensors, RFID, 5G connectivity, EV charging, wearables, facility tech, warehouse hardware"},
+  "DataFin":   {label:"Data / Finance / EDI",    color:"#a8dadc", keywords:"EDI integration, data analytics, freight payment, supply chain finance, audit"}
+};
+
+const TIER_ORDER = {Presenting:0,Headline:1,Gold:2,Silver:3,Bronze:4,Exhibitor:5,Prospect:6};
+
+// ═══════════════════════════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════════════════════════
+let db = [];           // all companies
+let activeFilters = {type:'all', tiers:new Set(), ai:new Set(), cat:'all'};
+let sortState = {col:'tier', dir:1};
+let currentView = 'table';
+let notes = {};        // {name -> note text}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// INIT — load from storage, merge with seed
+// ═══════════════════════════════════════════════════════════════════════════
+async function init() {
+  db = JSON.parse(JSON.stringify(SEED_DATA));
+
+  // Load persisted prospects
+  try {
+    const saved = await window.storage.get('prospects-v2');
+    if (saved) {
+      const extra = JSON.parse(saved.value);
+      const existing = new Set(db.map(d => d.name.toLowerCase()));
+      extra.forEach(p => { if (!existing.has(p.name.toLowerCase())) { db.push(p); existing.add(p.name.toLowerCase()); } });
+    }
+  } catch(e) {}
+
+  // Load notes
+  try {
+    const n = await window.storage.get('notes-v1');
+    if (n) notes = JSON.parse(n.value);
+  } catch(e) {}
+
+  buildSidebar();
+  updateStats();
+  renderTable();
+  renderHistory();
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// SAVE
+// ═══════════════════════════════════════════════════════════════════════════
+async function saveProspects() {
+  const prospects = db.filter(d => d.type === 'prospect' || d.type === 'ai-prospect');
+  try { await window.storage.set('prospects-v2', JSON.stringify(prospects)); } catch(e) {}
+}
+async function saveNotes() {
+  try { await window.storage.set('notes-v1', JSON.stringify(notes)); } catch(e) {}
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// SIDEBAR
+// ═══════════════════════════════════════════════════════════════════════════
+function buildSidebar() {
+  const list = document.getElementById('cat-list');
+  list.innerHTML = '';
+  Object.entries(CAT_META).forEach(([key, meta]) => {
+    const count = db.filter(d => d.cat === key).length;
+    const el = document.createElement('div');
+    el.className = 'sb-item';
+    el.dataset.cat = key;
+    el.onclick = function(){ selectCat(this); };
+    el.innerHTML = `<span class="sb-name" style="border-left:2px solid ${meta.color};padding-left:6px">${meta.label}</span><span class="sb-badge">${count}</span>`;
+    list.appendChild(el);
+  });
+}
+
+function selectCat(el) {
+  document.querySelectorAll('.sb-item').forEach(i => i.classList.remove('active'));
+  el.classList.add('active');
+  activeFilters.cat = el.dataset.cat;
+  applyFilters();
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// FILTER CHIPS
+// ═══════════════════════════════════════════════════════════════════════════
+function toggleFilter(chip) {
+  const filterType = chip.dataset.filter;
+  const val = chip.dataset.val;
+
+  if (filterType === 'type') {
+    document.querySelectorAll('[data-filter="type"]').forEach(c => c.classList.remove('on'));
+    chip.classList.add('on');
+    activeFilters.type = val;
+  } else if (filterType === 'tier') {
+    chip.classList.toggle('on');
+    if (chip.classList.contains('on')) activeFilters.tiers.add(val);
+    else activeFilters.tiers.delete(val);
+  } else if (filterType === 'ai') {
+    chip.classList.toggle('on');
+    if (chip.classList.contains('on')) activeFilters.ai.add(val);
+    else activeFilters.ai.delete(val);
+  }
+  applyFilters();
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// APPLY FILTERS
+// ═══════════════════════════════════════════════════════════════════════════
+function applyFilters() {
+  const search = document.getElementById('searchInput').value.toLowerCase().trim();
+  let filtered = db.filter(item => {
+    // Type
+    if (activeFilters.type !== 'all') {
+      if (activeFilters.type === 'sponsor' && item.type !== 'sponsor') return false;
+      if (activeFilters.type === 'prospect' && item.type !== 'prospect') return false;
+      if (activeFilters.type === 'ai-prospect' && item.type !== 'ai-prospect') return false;
+    }
+    // Tier
+    if (activeFilters.tiers.size > 0 && !activeFilters.tiers.has(item.tier)) return false;
+    // AI
+    if (activeFilters.ai.size > 0) {
+      const tags = (item.tags || []).map(t => t.toLowerCase());
+      let match = false;
+      if (activeFilters.ai.has('true') && item.ai) match = true;
+      if (activeFilters.ai.has('agentic') && tags.some(t => t.includes('agentic'))) match = true;
+      if (activeFilters.ai.has('predictive') && tags.some(t => t.includes('predictive'))) match = true;
+      if (activeFilters.ai.has('llm') && tags.some(t => t.includes('llm'))) match = true;
+      if (!match) return false;
+    }
+    // Category
+    if (activeFilters.cat !== 'all' && item.cat !== activeFilters.cat) return false;
+    // Search
+    if (search && !item.name.toLowerCase().includes(search) && !(item.role||''). toLowerCase().includes(search)) return false;
+    return true;
+  });
+
+  // Sort
+  filtered.sort((a,b) => {
+    let av, bv;
+    if (sortState.col === 'tier') { av = TIER_ORDER[a.tier]??9; bv = TIER_ORDER[b.tier]??9; return (av-bv)*sortState.dir; }
+    if (sortState.col === 'cat') { av = (CAT_META[a.cat]||{label:a.cat}).label; bv = (CAT_META[b.cat]||{label:b.cat}).label; }
+    else av = a[sortState.col]||'', bv = b[sortState.col]||'';
+    return av.toString().localeCompare(bv.toString())*sortState.dir;
+  });
+
+  document.getElementById('results-count').textContent = filtered.length;
+  renderActiveFilters();
+  if (currentView === 'table') renderTable(filtered);
+  else renderCards(filtered);
+  updateStats();
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// RENDER TABLE
+// ═══════════════════════════════════════════════════════════════════════════
+function renderTable(data) {
+  if (!data) {
+    data = db;
+    applyFilters(); return;
+  }
+  const tbody = document.getElementById('tableBody');
+  tbody.innerHTML = '';
+  document.getElementById('emptyState').style.display = data.length === 0 ? '' : 'none';
+  document.getElementById('mainTable').style.display = data.length === 0 ? 'none' : '';
+
+  data.forEach(item => {
+    const meta = CAT_META[item.cat] || {label:item.cat, color:'#7a8299'};
+    const tierClass = 't-' + (item.tier||''). toLowerCase().replace(/\s/g,'').replace('ai-prospect','ai-prospect');
+    const tags = (item.tags||[]).map(t => {
+      const cls = t==='AI'?'tag-ai':t==='Agentic'?'tag-agentic':t==='Predictive'?'tag-predictive':t==='LLM'?'tag-llm':t.includes('Twin')?'tag-twin':t==='CV'?'tag-cv':t.includes('Gap')?'tag-gap':'tag-added';
+      return `<span class="tag ${cls}">${t}</span>`;
+    }).join(' ');
+
+    const rowClass = item.type==='prospect'||item.type==='ai-prospect'?'prospect-row':(item.ai?'ai-row':'');
+    const noteVal = notes[item.name]||'';
+    const srcBadge = item.type==='ai-prospect'?'<span class="tag tag-ai">AI Found</span>':item.type==='prospect'?'<span class="tag tag-gap">Gap</span>':'<span class="tag tag-added" style="color:var(--muted);border-color:var(--border2)">Manifest</span>';
+
+    const tr = document.createElement('tr');
+    tr.className = rowClass;
+    tr.innerHTML = `
+      <td><div class="row-name">${item.name}</div>${item.role?`<div class="row-notes">${item.role}</div>`:''}</td>
+      <td><span class="tier ${tierClass}">${item.tier}</span></td>
+      <td><span class="cat-pill" style="background:${meta.color}18;color:${meta.color};border:1px solid ${meta.color}30">${meta.label}</span></td>
+      <td>${tags}</td>
+      <td class="note-cell"><input class="note-input" placeholder="Add note..." value="${noteVal.replace(/"/g,'&quot;')}" data-name="${item.name.replace(/"/g,'&quot;')}" onchange="saveNote(this)" onblur="saveNote(this)"></td>
+      <td>${srcBadge}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+function saveNote(input) {
+  notes[input.dataset.name] = input.value;
+  saveNotes();
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// RENDER CARDS
+// ═══════════════════════════════════════════════════════════════════════════
+function renderCards(data) {
+  const grid = document.getElementById('cardView');
+  grid.innerHTML = '';
+  data.forEach(item => {
+    const meta = CAT_META[item.cat]||{label:item.cat, color:'#7a8299'};
+    const tierClass = 't-' + (item.tier||''). toLowerCase().replace(/\s/g,'');
+    const tags = (item.tags||[]).map(t => {
+      const cls = t==='AI'?'tag-ai':t==='Agentic'?'tag-agentic':t==='Predictive'?'tag-predictive':t==='LLM'?'tag-llm':t.includes('Twin')?'tag-twin':t==='CV'?'tag-cv':'tag-added';
+      return `<span class="tag ${cls}">${t}</span>`;
+    }).join(' ');
+    const cardClass = item.type==='prospect'||item.type==='ai-prospect'?'prospect-card-v2':'sponsor-card';
+    const div = document.createElement('div');
+    div.className = cardClass;
+    div.innerHTML = `<div class="card-color-bar" style="background:${meta.color}"></div>
+      <div class="card-co-name">${item.name}</div>
+      <div class="card-meta"><span class="tier ${tierClass}">${item.tier}</span><span class="cat-pill" style="background:${meta.color}18;color:${meta.color};border:1px solid ${meta.color}30;font-family:'DM Mono',monospace;font-size:9px;padding:2px 7px;border-radius:100px">${meta.label}</span></div>
+      ${tags?`<div style="display:flex;flex-wrap:wrap;gap:3px">${tags}</div>`:''}
+      ${item.role?`<div class="card-notes">${item.role}</div>`:''}`;
+    grid.appendChild(div);
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// SORT
+// ═══════════════════════════════════════════════════════════════════════════
+function sortBy(col) {
+  if (sortState.col === col) sortState.dir *= -1;
+  else { sortState.col = col; sortState.dir = 1; }
+  document.querySelectorAll('.tbl th').forEach(th => th.classList.remove('sorted'));
+  const thEl = document.getElementById('th-'+col);
+  if (thEl) {
+    thEl.classList.add('sorted');
+    thEl.querySelector('.sort-arrow').textContent = sortState.dir === 1 ? '↑' : '↓';
+  }
+  applyFilters();
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// VIEW TOGGLE
+// ═══════════════════════════════════════════════════════════════════════════
+function setView(v, btn) {
+  document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentView = v;
+  const tblWrap = document.getElementById('tableWrap');
+  const cardGrid = document.getElementById('cardView');
+  tblWrap.style.display = v === 'table' ? '' : 'none';
+  cardGrid.classList.toggle('active', v === 'cards');
+  applyFilters();
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// ACTIVE FILTER PILLS
+// ═══════════════════════════════════════════════════════════════════════════
+function renderActiveFilters() {
+  const bar = document.getElementById('activeFilters');
+  bar.innerHTML = '';
+  const pills = [];
+
+  if (activeFilters.type !== 'all') pills.push({label:'Type: '+activeFilters.type, clear:()=>{activeFilters.type='all'; document.querySelectorAll('[data-filter="type"]').forEach(c=>c.classList.remove('on')); document.querySelector('[data-filter="type"][data-val="all"]').classList.add('on'); applyFilters();}});
+  activeFilters.tiers.forEach(t => pills.push({label:'Tier: '+t, clear:()=>{ activeFilters.tiers.delete(t); document.querySelector(`[data-filter="tier"][data-val="${t}"]`).classList.remove('on'); applyFilters();}}));
+  activeFilters.ai.forEach(a => pills.push({label:'AI: '+a, clear:()=>{ activeFilters.ai.delete(a); document.querySelector(`[data-filter="ai"][data-val="${a}"]`).classList.remove('on'); applyFilters();}}));
+  if (activeFilters.cat !== 'all') pills.push({label:'Cat: '+(CAT_META[activeFilters.cat]||{label:activeFilters.cat}).label, clear:()=>{ activeFilters.cat='all'; document.querySelectorAll('.sb-item').forEach(i=>i.classList.remove('active')); document.querySelector('[data-cat="all"]').classList.add('active'); applyFilters();}});
+
+  if (pills.length > 0) {
+    const lbl = document.createElement('span');
+    lbl.className = 'af-label';
+    lbl.textContent = 'Filters:';
+    bar.appendChild(lbl);
+    pills.forEach(p => {
+      const el = document.createElement('span');
+      el.className = 'af-pill';
+      el.innerHTML = `${p.label}<button onclick="(${p.clear.toString()})()">×</button>`;
+      bar.appendChild(el);
+    });
+    const clr = document.createElement('button');
+    clr.className = 'clear-all';
+    clr.textContent = 'Clear all';
+    clr.onclick = clearAllFilters;
+    bar.appendChild(clr);
+  }
+}
+
+function clearAllFilters() {
+  activeFilters = {type:'all', tiers:new Set(), ai:new Set(), cat:'all'};
+  document.querySelectorAll('.chip').forEach(c => c.classList.remove('on'));
+  document.querySelector('[data-filter="type"][data-val="all"]').classList.add('on');
+  document.querySelectorAll('.sb-item').forEach(i => i.classList.remove('active'));
+  document.querySelector('[data-cat="all"]').classList.add('active');
+  document.getElementById('searchInput').value = '';
+  applyFilters();
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// STATS
+// ═══════════════════════════════════════════════════════════════════════════
+function updateStats() {
+  document.getElementById('stat-total').textContent = db.length;
+  document.getElementById('stat-sponsors').textContent = db.filter(d => d.type==='sponsor').length;
+  document.getElementById('stat-prospects').textContent = db.filter(d => d.type==='prospect'||d.type==='ai-prospect').length;
+  document.getElementById('stat-ai').textContent = db.filter(d => d.ai).length;
+  document.getElementById('sb-all').textContent = db.length;
+  // Update sidebar counts
+  Object.keys(CAT_META).forEach(cat => {
+    const cnt = db.filter(d => d.cat === cat).length;
+    const el = document.querySelector(`[data-cat="${cat}"] .sb-badge`);
+    if (el) el.textContent = cnt;
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// AI FIND MORE
+// ═══════════════════════════════════════════════════════════════════════════
+async function findMoreProspects() {
+  const catKey = document.getElementById('fmCatSelect').value;
+  const btn = document.getElementById('fmBtn');
+  const resultsEl = document.getElementById('fmResults');
+
+  btn.classList.add('loading');
+  btn.disabled = true;
+  resultsEl.innerHTML = '<div class="fm-empty">Searching for prospects...</div>';
+
+  // Get existing names to exclude
+  const existingNames = db.map(d => d.name).join(', ');
+
+  let catDesc, catLabel;
+  if (catKey === 'all') {
+    catDesc = 'supply chain and logistics technology — any category including 3PL, WMS, TMS, robotics, visibility, AI platforms, last mile, procurement';
+    catLabel = 'All Categories';
+  } else {
+    const meta = CAT_META[catKey];
+    catDesc = meta.keywords;
+    catLabel = meta.label;
+  }
+
+  const prompt = `You are a supply chain and logistics industry expert helping a sponsorship sales team identify new prospects for Manifest Vegas 2026, the leading supply chain tech conference.
+
+Target category: "${catLabel}"
+Focus areas: ${catDesc}
+
+Companies ALREADY in our database (DO NOT suggest any of these):
+${existingNames}
+
+Please suggest 8 companies that would be strong sponsorship prospects for this category. Prioritize:
+- Real, well-known companies with active marketing budgets
+- Companies that sell to supply chain/logistics practitioners
+- Mix of established players and fast-growing startups
+- Companies NOT already sponsoring Manifest 2026
+
+Return ONLY a JSON array, no markdown, no explanation:
+[
+  {
+    "name": "Company Name",
+    "role": "What they do in one short phrase",
+    "why": "One sentence on why they fit this category and would want to sponsor",
+    "cat": "${catKey === 'all' ? 'TMS' : catKey}"
+  }
+]
+
+For "cat", use one of these exact values: 3PL, Robotics, WMS, TMS, LastMile, Visibility, Freight, eCommerce, AI, Planning, Procurement, AV, Infra, DataFin`;
+
+  try {
+    const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer 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',
+        'HTTP-Referer': window.location.origin,
+        'X-Title': 'Manifest 2026 Prospect Intelligence'
+      },
+      body: JSON.stringify({
+        model: 'anthropic/claude-3-haiku',
+        max_tokens: 1200,
+        messages: [{role:'user', content: prompt}]
+      })
+    });
+    const data = await res.json();
+    console.log('OpenRouter response:', JSON.stringify(data));
+    if (data.error) throw new Error(data.error.message || JSON.stringify(data.error));
+    const raw = (data.choices||[]).map(c => c.message?.content||'').join('').trim().replace(/```json|```/g,'').trim();
+    const companies = JSON.parse(raw);
+
+    resultsEl.innerHTML = '';
+    companies.forEach(co => {
+      const meta = CAT_META[co.cat]||CAT_META[catKey]||{label:catKey||'General', color:'#7a8299'};
+      const alreadyAdded = db.some(d => d.name.toLowerCase() === co.name.toLowerCase());
+      const card = document.createElement('div');
+      card.className = 'fm-card';
+      card.innerHTML = `
+        <div class="fm-card-name">${co.name}</div>
+        <div class="fm-card-cat">${meta.label}</div>
+        <div style="font-size:11px;color:var(--accent2);margin-bottom:4px">${co.role||''}</div>
+        <div class="fm-card-why">${co.why}</div>
+        <button class="fm-add-btn ${alreadyAdded?'added':''}" onclick="addProspect(${JSON.stringify(co).replace(/"/g,'&quot;')}, this)" ${alreadyAdded?'disabled':''}>${alreadyAdded?'✓ Already in database':'+ Add to Database'}</button>
+      `;
+      resultsEl.appendChild(card);
+    });
+  } catch(e) {
+    resultsEl.innerHTML = `<div class="fm-empty">⚠ Could not load suggestions. Ensure you're connected to the internet.</div>`;
+  }
+
+  btn.classList.remove('loading');
+  btn.disabled = false;
+}
+
+async function addProspect(co, btn) {
+  const meta = CAT_META[co.cat]||{label:co.cat, color:'#7a8299'};
+  const newEntry = {
+    name: co.name,
+    cat: co.cat,
+    ai: false,
+    tier: 'Prospect',
+    tags: [],
+    type: 'ai-prospect',
+    role: co.role||co.why||''
+  };
+  db.push(newEntry);
+  await saveProspects();
+  btn.textContent = '✓ Added';
+  btn.classList.add('added');
+  btn.disabled = true;
+  buildSidebar();
+  updateStats();
+  renderHistory();
+  applyFilters();
+}
+
+function renderHistory() {
+  const prospects = db.filter(d => d.type==='ai-prospect');
+  const histEl = document.getElementById('fmHistory');
+  const listEl = document.getElementById('fmHistoryList');
+  if (prospects.length === 0) { histEl.style.display='none'; return; }
+  histEl.style.display = '';
+  listEl.innerHTML = prospects.slice(-10).reverse().map(p => {
+    const meta = CAT_META[p.cat]||{label:p.cat, color:'#7a8299'};
+    return `<div class="fm-history-item"><span class="fm-history-name">${p.name}</span><span class="fm-history-meta" style="color:${meta.color}">${meta.label}</span></div>`;
+  }).join('');
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// EXPORT CSV
+// ═══════════════════════════════════════════════════════════════════════════
+function exportCSV() {
+  const search = document.getElementById('searchInput').value.toLowerCase().trim();
+  let filtered = db.filter(item => {
+    if (activeFilters.type !== 'all') { if (activeFilters.type === 'sponsor' && item.type !== 'sponsor') return false; if (activeFilters.type === 'prospect' && (item.type!=='prospect'&&item.type!=='ai-prospect')) return false; }
+    if (activeFilters.tiers.size > 0 && !activeFilters.tiers.has(item.tier)) return false;
+    if (activeFilters.cat !== 'all' && item.cat !== activeFilters.cat) return false;
+    if (search && !item.name.toLowerCase().includes(search)) return false;
+    return true;
+  });
+  const rows = ['Company,Tier,Category,AI Tags,Type,Notes,Description'];
+  filtered.forEach(d => {
+    const meta = CAT_META[d.cat]||{label:d.cat};
+    rows.push([d.name, d.tier, meta.label, (d.tags||[]).join(';'), d.type, (notes[d.name]||'').replace(/,/g,' '), (d.role||'').replace(/,/g,' ')].map(v=>`"${v}"`).join(','));
+  });
+  const blob = new Blob([rows.join('\n')], {type:'text/csv'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'manifest2026_prospects.csv'; a.click();
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// START
+// ═══════════════════════════════════════════════════════════════════════════
+init();
+</script>
+</body>
+</html>
